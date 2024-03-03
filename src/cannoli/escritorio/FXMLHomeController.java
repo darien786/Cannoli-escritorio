@@ -5,15 +5,22 @@
  */
 package cannoli.escritorio;
 
+import cannoli.modelo.pojo.Empleado;
+import cannoli.utils.Utilidades;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -22,8 +29,8 @@ import javafx.scene.image.ImageView;
  */
 public class FXMLHomeController implements Initializable {
 
-    @FXML
-    private Label lbNombreUsuario;
+    private Empleado empleado;
+    
     @FXML
     private Label lbBotonEmpresa;
     @FXML
@@ -39,9 +46,11 @@ public class FXMLHomeController implements Initializable {
     @FXML
     private TextField tfRol;
     @FXML
-    private TextField tfEmpresa;
-    @FXML
     private ImageView ivUsuarios;
+    @FXML
+    private Label lbNombreEmpleado;
+    @FXML
+    private TextField tfTelefono;
 
     /**
      * Initializes the controller class.
@@ -69,11 +78,58 @@ public class FXMLHomeController implements Initializable {
 
     @FXML
     private void btnCerrarSesion(ActionEvent event) {
+        
+        try{
+            Stage stage = (Stage) lbNombreEmpleado.getScene().getWindow();
+            
+            FXMLLoader load = new FXMLLoader(getClass().getResource("FXMLLogin.fxml"));
+            Parent vista = load.load();
+            
+            Utilidades.mostrarAlertaSimple("Cerrar Sesión", "Adios " + empleado.getNombreEmpleado(), Alert.AlertType.INFORMATION);
+            
+            Scene scene = new Scene(vista);
+            stage.setScene(scene);
+            stage.show();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void btnIrPantallaEmpleados(ActionEvent event) {
-        
+        try{
+            Stage stage = new Stage();
+            
+            FXMLLoader load = new FXMLLoader(getClass().getResource("FXMLGestionEmpleados.fxml"));
+            Parent vista = load.load();
+            
+            FXMLGestionEmpleadosController controlador = load.getController();
+            controlador.obtenerInformacionEmpleados();
+            
+            Scene scene = new Scene(vista);
+            stage.setScene(scene);
+            stage.showAndWait();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void obtenerInformacionEmpleado(Empleado empleado){
+        this.empleado = empleado;
+        if(empleado != null){
+            cargarInformacionEmpleado(empleado);
+        }
+    }
+    
+    private void cargarInformacionEmpleado(Empleado empleado){
+        lbNombreEmpleado.setText(empleado.getNombreEmpleado());
+        tfNombre.setText(empleado.getNombreEmpleado());
+        tfCurp.setText(empleado.getCurp());
+        tfEmail.setText(empleado.getCorreo());
+        tfRol.setText(empleado.getNombreRol());
+        tfTelefono.setText(empleado.getTelefono());
     }
     
 }

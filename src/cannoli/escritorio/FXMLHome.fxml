@@ -27,7 +27,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="lbNombreUsuario" layoutX="364.0" layoutY="80.0" text="nombre" textFill="#d02b55">
+      <Label fx:id="lbNombreEmpleado" layoutX="364.0" layoutY="80.0" text="nombre" textFill="#d02b55">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>
@@ -105,7 +105,7 @@
             <TextField fx:id="tfCurp" editable="false" layoutX="19.0" layoutY="139.0" prefHeight="25.0" prefWidth="265.0" style="-fx-background-radius: 30; -fx-background-color: white;" />
             <TextField fx:id="tfEmail" editable="false" layoutX="19.0" layoutY="198.0" prefHeight="25.0" prefWidth="265.0" style="-fx-background-radius: 30; -fx-background-color: white;" />
             <TextField fx:id="tfRol" editable="false" layoutX="19.0" layoutY="252.0" prefHeight="25.0" prefWidth="265.0" style="-fx-background-radius: 30; -fx-background-color: white;" />
-            <TextField fx:id="tfEmpresa" editable="false" layoutX="19.0" layoutY="310.0" prefHeight="25.0" prefWidth="265.0" style="-fx-background-radius: 30; -fx-background-color: white;" />
+            <TextField fx:id="tfTelefono" editable="false" layoutX="19.0" layoutY="310.0" prefHeight="25.0" prefWidth="265.0" style="-fx-background-radius: 30; -fx-background-color: white;" />
          </children>
       </Pane>
       <ImageView fitHeight="60.0" fitWidth="53.0" layoutX="14.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">

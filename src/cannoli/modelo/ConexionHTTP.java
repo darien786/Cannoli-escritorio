@@ -84,4 +84,32 @@ public class ConexionHTTP {
 
         return respuesta;
     }
+    
+    public static CodigoHTTP peticionGET(String url){
+        CodigoHTTP respuesta = new CodigoHTTP();
+        try{
+            URL urlServicio = new URL(url);
+            HttpURLConnection conexionHTTP = (HttpURLConnection) urlServicio.openConnection();
+
+            conexionHTTP.setRequestMethod("GET");
+            conexionHTTP.setRequestProperty("Content-Type", "application/json");
+            conexionHTTP.setDoOutput(true);
+            //Termina la escritura
+
+            int codigoRespuesta = conexionHTTP.getResponseCode();
+            respuesta.setCodigoRespuesta(codigoRespuesta);
+
+            if (codigoRespuesta == HttpURLConnection.HTTP_OK) {
+                respuesta.setContenido(deserializar(conexionHTTP.getInputStream()));
+            }
+        } catch (MalformedURLException ex) {
+            respuesta.setCodigoRespuesta(Constantes.ERROR_URL);
+            respuesta.setContenido("ERROR: " + ex.getMessage());
+        } catch (IOException ex) {
+            respuesta.setCodigoRespuesta(Constantes.ERROR_PETICION);
+            respuesta.setContenido("ERROR: " + ex.getMessage());
+        }
+
+        return respuesta;
+    } 
 }

@@ -5,9 +5,12 @@
  */
 package cannoli.escritorio;
 
+import cannoli.modelo.dao.EmpleadoDAO;
 import cannoli.modelo.pojo.Empleado;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +19,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class
@@ -24,20 +28,20 @@ import javafx.scene.control.TextField;
  */
 public class FXMLGestionEmpleadosController implements Initializable {
 
-    private ObservableList<Empleado> olEmpleados;
+    private ObservableList<Empleado> empleados;
     
     @FXML
-    private TableView<?> tvEmpleados;
+    private TableView<Empleado> tvEmpleados;
     @FXML
-    private TableColumn<?, ?> colNombre;
+    private TableColumn colNombre;
     @FXML
-    private TableColumn<?, ?> colCorreo;
+    private TableColumn colCorreo;
     @FXML
-    private TableColumn<?, ?> colTelefono;
+    private TableColumn colTelefono;
     @FXML
-    private TableColumn<?, ?> colRol;
+    private TableColumn colRol;
     @FXML
-    private TableColumn<?, ?> colEstatus;
+    private TableColumn colEstatus;
     @FXML
     private TextField tfBuscarEmpleado;
     @FXML
@@ -50,7 +54,7 @@ public class FXMLGestionEmpleadosController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        cargarInformacionEmpleados();
     }    
 
     @FXML
@@ -69,9 +73,18 @@ public class FXMLGestionEmpleadosController implements Initializable {
     private void btnEliminar(ActionEvent event) {
     }
     
-    private void obtenerEmpleados(){
-        
+    private void cargarInformacionEmpleados(){
+        colNombre.setCellValueFactory(new PropertyValueFactory("nombreEmpleado"));
+        colTelefono.setCellValueFactory(new PropertyValueFactory("telefono"));
+        colEstatus.setCellValueFactory(new PropertyValueFactory("nombreEstatus"));
+        colCorreo.setCellValueFactory(new PropertyValueFactory("correo"));
+        colRol.setCellValueFactory(new PropertyValueFactory("nombreRol"));
+    }
     
+    public void obtenerInformacionEmpleados(){
+        List<Empleado> listaEmpleados = EmpleadoDAO.obtenerEmpleados();
+        empleados = FXCollections.observableArrayList(listaEmpleados);
+        tvEmpleados.setItems(empleados);
     }
     
 }

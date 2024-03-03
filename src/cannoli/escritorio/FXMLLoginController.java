@@ -13,12 +13,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  *
@@ -54,6 +58,7 @@ public class FXMLLoginController implements Initializable {
         MensajeAutenticacion respuestaWS = AutenticacionDAO.validarSesion(username, contrasenia);
         if(!respuestaWS.isError()){
             Utilidades.mostrarAlertaSimple("Credenciales correstas", respuestaWS.getMensaje(), Alert.AlertType.INFORMATION);
+            irPantallaHome(respuestaWS.getEmpleado());
         }else{
             Utilidades.mostrarAlertaSimple("Credenciales incorrectas", respuestaWS.getMensaje(), Alert.AlertType.INFORMATION);
         }
@@ -69,5 +74,25 @@ public class FXMLLoginController implements Initializable {
             verificarInicioSesion(username, contrasenia);
         }
         
+    }
+    
+    private void irPantallaHome(Empleado empleado){
+        try{
+            Stage stage = (Stage) tfUsername.getScene().getWindow();
+            
+            FXMLLoader load = new FXMLLoader(getClass().getResource("FXMLHome.fxml"));
+            Parent vista = load.load();
+            
+            FXMLHomeController controlador = load.getController();
+            controlador.obtenerInformacionEmpleado(empleado);
+            
+            Scene scene = new Scene(vista);
+            stage.setScene(scene);
+            stage.show();
+            
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

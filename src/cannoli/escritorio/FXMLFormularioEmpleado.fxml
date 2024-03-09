@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="912.0" style="-fx-background-color: #f99eb9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cannoli.escritorio.FXMLFormularioEmpleadoController">
+   <children>
+      <Label layoutX="25.0" layoutY="30.0" text="Empleado" textFill="#d02b55">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="22.0" fitWidth="16.0" layoutX="25.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/user.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="47.0" layoutY="79.0" text="Registro de empleado" textFill="#d02b55">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d02b55" height="6.0" layoutX="31.0" layoutY="115.0" stroke="#f4f6f6" strokeType="INSIDE" width="850.0" />
+      <Pane layoutX="15.0" layoutY="129.0" prefHeight="262.0" prefWidth="878.0" style="-fx-background-color: #d02b55; -fx-background-radius: 20;">
+         <children>
+            <TextField fx:id="tfNombre" layoutX="15.0" layoutY="76.0" prefHeight="25.0" prefWidth="175.0" promptText="Nombre" style="-fx-background-radius: 30; -fx-background-color: white;" />
+            <Label layoutX="15.0" layoutY="49.0" text="Nombre " textFill="#f1d4e8">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label layoutX="228.0" layoutY="52.0" text="Apellido Paterno" textFill="#f1d4e8">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label layoutX="449.0" layoutY="55.0" text="Apellido Materno" textFill="#f1d4e8">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label layoutX="11.0" layoutY="14.0" text="Datos del usuario" textFill="#f1d4e8">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <TextField fx:id="tfApellidoPaterno" layoutX="228.0" layoutY="79.0" prefHeight="25.0" prefWidth="175.0" promptText="Apellido Paterno" style="-fx-background-radius: 30; -fx-background-color: white;" />
+            <TextField fx:id="tfApellidoMaterno" layoutX="449.0" layoutY="82.0" prefHeight="25.0" prefWidth="175.0" promptText="Apellido Materno" style="-fx-background-radius: 30; -fx-background-color: white;" />
+            <Label layoutX="674.0" layoutY="55.0" text="CURP" textFill="#f1d4e8">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <TextField fx:id="tfCurp" layoutX="674.0" layoutY="82.0" prefHeight="25.0" prefWidth="178.0" promptText="CURP" style="-fx-background-radius: 30; -fx-background-color: white;" />
+            <Label fx:id="lbErrorNombre" layoutX="27.0" layoutY="107.0" text="Label" textFill="RED" />
+            <Label fx:id="lbErrorApellidoPaterno" layoutX="248.0" layoutY="110.0" text="Label" textFill="RED" />
+            <Label fx:id="lbErrorApellidoMaterno" layoutX="462.0" layoutY="113.0" text="Label" textFill="RED" />
+            <Label fx:id="lbErrorCURP" layoutX="693.0" layoutY="113.0" text="Label" textFill="RED" />
+            <TextField fx:id="tfCorreo" layoutX="449.0" layoutY="182.0" promptText="ejemplo@email.com" style="-fx-background-radius: 30; -fx-background-color: white;" />
+            <Label layoutX="449.0" layoutY="158.0" text="Correo" textFill="#f1d4e8">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label fx:id="lbErrorEmail" layoutX="462.0" layoutY="211.0" text="Label" textFill="RED" />
+            <Label fx:id="lbErrorCURP1" layoutX="33.0" layoutY="207.0" text="Label" textFill="RED" />
+            <Label layoutX="14.0" layoutY="149.0" text="Sexo" textFill="#f1d4e8">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbErrorCURP2" layoutX="247.0" layoutY="211.0" text="Telefono" textFill="RED" />
+            <TextField fx:id="tfTelefono" layoutX="228.0" layoutY="180.0" prefHeight="25.0" prefWidth="178.0" promptText="Telefono" style="-fx-background-radius: 30; -fx-background-color: white;" />
+            <Label layoutX="228.0" layoutY="153.0" text="Telefono" textFill="#f1d4e8">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cbSexo" layoutX="15.0" layoutY="180.0" prefWidth="175.0" style="-fx-background-color: white; -fx-background-radius: 30;" />
+         </children>
+      </Pane>
+      <Button layoutX="304.0" layoutY="589.0" mnemonicParsing="false" onAction="#btnGuardar" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #d02b55; -fx-background-radius: 30;" text="Guardar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Pane layoutX="15.0" layoutY="404.0" prefHeight="160.0" prefWidth="878.0" style="-fx-background-color: #d02b55; -fx-background-radius: 20;">
+         <children>
+            <TextField fx:id="tfUsername" layoutX="14.0" layoutY="69.0" prefWidth="175.0" promptText="Nombre de usuario" style="-fx-background-radius: 30; -fx-background-color: white;" />
+            <Label layoutX="14.0" layoutY="44.0" text="Username" textFill="#f1d4e8">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label layoutX="451.0" layoutY="45.0" text="Rol" textFill="#f1d4e8">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label layoutX="228.0" layoutY="45.0" text="Contraseña" textFill="#f1d4e8">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <TextField fx:id="tfPassword" layoutX="228.0" layoutY="69.0" prefWidth="175.0" promptText="Contraseña" style="-fx-background-radius: 30; -fx-background-color: white;" />
+            <Label layoutX="14.0" layoutY="14.0" text="Datos de la cuenta" textFill="#f1d4e8">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cbRol" layoutX="451.0" layoutY="69.0" prefWidth="175.0" style="-fx-background-color: white; -fx-background-radius: 30;" />
+            <Label fx:id="lbErrorUsername" layoutX="71.0" layoutY="95.0" text="Label" textFill="RED" />
+            <Label fx:id="lbErrorRol" layoutX="462.0" layoutY="105.0" text="Label" textFill="RED" />
+            <Label fx:id="lbErrorPassword" layoutX="276.0" layoutY="99.0" text="Label" textFill="RED" />
+            <Label fx:id="lbErrorRol1" layoutX="684.0" layoutY="107.0" text="Label" textFill="RED" />
+            <ComboBox fx:id="cbEstatus" layoutX="673.0" layoutY="71.0" prefWidth="175.0" style="-fx-background-color: white; -fx-background-radius: 30;" />
+            <Label layoutX="673.0" layoutY="47.0" text="Estatus" textFill="#f1d4e8">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+         </children>
+      </Pane>
+      <ImageView fx:id="ivEmpleado" fitHeight="109.0" fitWidth="115.0" layoutX="784.0" onMouseClicked="#btnBuscarImagen" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/photo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

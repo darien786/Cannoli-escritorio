@@ -10,7 +10,7 @@ package cannoli.modelo.pojo;
  * @author cr7_k
  */
 public class Empleado {
-private Integer idEmpleado;
+    private Integer idEmpleado;
     private Integer persona;
     private String curp;
     private String correo;
@@ -23,6 +23,8 @@ private Integer idEmpleado;
     private String telefono;
     private String nombreRol;
     private String nombreEstatus;
+    private String fotografiaBase64;
+    
     
     public Empleado() {
     }
@@ -42,7 +44,7 @@ private Integer idEmpleado;
         this.nombreRol = nombreRol;
         this.nombreEstatus = nombreEstatus;
     }
-    
+
     public Integer getIdEmpleado() {
         return idEmpleado;
     }
@@ -146,7 +148,13 @@ private Integer idEmpleado;
     public void setNombreEstatus(String nombreEstatus) {
         this.nombreEstatus = nombreEstatus;
     }
-    
-    
+
+    public String getFotografiaBase64() {
+        return fotografiaBase64;
+    }
+
+    public void setFotografiaBase64(String fotografiaBase64) {
+        this.fotografiaBase64 = fotografiaBase64;
+    }
     
 }

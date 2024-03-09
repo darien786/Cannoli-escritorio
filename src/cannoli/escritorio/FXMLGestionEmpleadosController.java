@@ -14,12 +14,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -63,10 +67,45 @@ public class FXMLGestionEmpleadosController implements Initializable {
 
     @FXML
     private void btnRegistrar(ActionEvent event) {
+        try{
+            Stage stage = new Stage();
+            
+            FXMLLoader load = new FXMLLoader(getClass().getResource("FXMLFormularioEmpleado.fxml"));
+            Parent vista = load.load();
+            
+            FXMLFormularioEmpleadoController controlador = load.getController();
+            
+            
+            Scene scene = new Scene(vista);
+            stage.setScene(scene);
+            stage.setTitle("Registrar empleado");
+            stage.showAndWait();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
-
+    
     @FXML
     private void btnEditar(ActionEvent event) {
+        Empleado empleado = tvEmpleados.getSelectionModel().getSelectedItem();
+        try{
+            Stage stage = new Stage();
+            
+            FXMLLoader load = new FXMLLoader(getClass().getResource("FXMLFormularioEmpleado.fxml"));
+            Parent vista = load.load();
+            
+            FXMLFormularioEmpleadoController controlador = load.getController();
+            controlador.obtenerEmpleado(empleado);
+            
+            Scene scene = new Scene(vista);
+            stage.setScene(scene);
+            stage.setTitle("Modificar empleado");
+            stage.showAndWait();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -86,5 +125,7 @@ public class FXMLGestionEmpleadosController implements Initializable {
         empleados = FXCollections.observableArrayList(listaEmpleados);
         tvEmpleados.setItems(empleados);
     }
+    
+    
     
 }

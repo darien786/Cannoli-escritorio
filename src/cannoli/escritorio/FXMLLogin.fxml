@@ -28,18 +28,34 @@
                   <Font name="System Bold" size="15.0" />
                </font></Label>
             <TextField fx:id="tfUsername" layoutX="82.0" layoutY="161.0" prefHeight="36.0" prefWidth="268.0" promptText="Ingresa tu usuario" style="-fx-background-color: #F4F6F6; -fx-border-radius: 30; -fx-background-radius: 30;" />
-            <Label fx:id="lbErrorUsername" layoutX="221.0" layoutY="276.0" prefHeight="17.0" prefWidth="180.0" text="Label" textFill="RED" />
+            <Label fx:id="lbErrorUsername" layoutX="100.0" layoutY="197.0" prefHeight="17.0" prefWidth="180.0" text="Label" textFill="#f1d4e8">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font></Label>
             <Label layoutX="75.0" layoutY="217.0" text="Contraseña" textFill="#f1d4e8">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Label>
             <PasswordField fx:id="tfPassword" layoutX="84.0" layoutY="245.0" prefHeight="36.0" prefWidth="268.0" promptText="Ingresa tu contraseña" style="-fx-background-color: #F4F6F6; -fx-background-radius: 30;" />
-            <Label fx:id="lbErrorPassword" layoutX="221.0" layoutY="349.0" prefHeight="17.0" prefWidth="180.0" text="Label" textFill="RED" />
+            <Label fx:id="lbErrorPassword" layoutX="100.0" layoutY="281.0" prefHeight="17.0" prefWidth="180.0" text="Label" textFill="#f1d4e8">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font></Label>
             <Button layoutX="106.0" layoutY="312.0" mnemonicParsing="false" onAction="#btnIniciarSesion" prefHeight="34.0" prefWidth="225.0" style="-fx-background-color: #f1d4e8; -fx-border-radius: 30; -fx-background-radius: 30;" text="Iniciar sesión" textFill="#d02b55">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
+            <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="321.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/user.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="322.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/lock.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane prefHeight="450.0" prefWidth="451.0">

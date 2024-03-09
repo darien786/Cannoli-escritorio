@@ -5,6 +5,10 @@
         <group>
             <file>file:/C:/Users/cr7_k/OneDrive/Documentos/NetBeansProjects/Cannoli-escritorio/src/cannoli/escritorio/FXMLHomeController.java</file>
             <file>file:/C:/Users/cr7_k/OneDrive/Documentos/NetBeansProjects/Cannoli-escritorio/src/cannoli/modelo/dao/EmpleadoDAO.java</file>
+            <file>file:/C:/Users/cr7_k/OneDrive/Documentos/NetBeansProjects/Cannoli-escritorio/src/cannoli/escritorio/FXMLFormularioEmpleadoController.java</file>
+            <file>file:/C:/Users/cr7_k/OneDrive/Documentos/NetBeansProjects/Cannoli-escritorio/src/cannoli/modelo/dao/EstatusDAO.java</file>
+            <file>file:/C:/Users/cr7_k/OneDrive/Documentos/NetBeansProjects/Cannoli-escritorio/src/cannoli/utils/Utilidades.java</file>
+            <file>file:/C:/Users/cr7_k/OneDrive/Documentos/NetBeansProjects/Cannoli-escritorio/src/cannoli/modelo/dao/RolDAO.java</file>
             <file>file:/C:/Users/cr7_k/OneDrive/Documentos/NetBeansProjects/Cannoli-escritorio/src/cannoli/escritorio/FXMLLoginController.java</file>
             <file>file:/C:/Users/cr7_k/OneDrive/Documentos/NetBeansProjects/Cannoli-escritorio/src/cannoli/modelo/pojo/Empleado.java</file>
             <file>file:/C:/Users/cr7_k/OneDrive/Documentos/NetBeansProjects/Cannoli-escritorio/src/cannoli/escritorio/FXMLHome.fxml</file>

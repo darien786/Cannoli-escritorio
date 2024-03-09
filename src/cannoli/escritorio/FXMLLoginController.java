@@ -42,13 +42,20 @@ public class FXMLLoginController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        lbErrorUsername.setText("");
+        lbErrorPassword.setText("");
     }    
     
     private Boolean verificarDatos(String username, String contrasenia){
         boolean error = false;
-        if(username.isEmpty() || contrasenia.isEmpty()){
+        if(username.isEmpty()){
             error = true;
+            lbErrorUsername.setText("*Campo obligatorio");
+        }
+        
+        if(contrasenia.isEmpty()){
+            error = true;
+            lbErrorPassword.setText("*Campo obligatorio");
         }
         
         return error;

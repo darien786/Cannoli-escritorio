@@ -5,6 +5,7 @@
  */
 package cannoli.escritorio;
 
+import cannoli.escritorio.proveedores.FXMLGestionProveedoresController;
 import cannoli.modelo.pojo.Empleado;
 import cannoli.utils.Utilidades;
 import java.net.URL;
@@ -75,6 +76,7 @@ public class FXMLHomeController implements Initializable {
     @FXML
     private void btnIrPantallaSucursal(ActionEvent event) {
     }
+    
 
     @FXML
     private void btnCerrarSesion(ActionEvent event) {
@@ -130,6 +132,16 @@ public class FXMLHomeController implements Initializable {
         tfEmail.setText(empleado.getCorreo());
         tfRol.setText(empleado.getNombreRol());
         tfTelefono.setText(empleado.getTelefono());
+    }
+    
+    @FXML
+    private void btnIrPantallaProveedores(ActionEvent event) {
+        try{
+            Stage stage = (Stage) lbEmpresa.getScene().getWindow();
+            FXMLLoader load = new FXMLLoader().getController();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
     }
     
 }

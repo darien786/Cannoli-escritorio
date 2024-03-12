@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -23,11 +22,9 @@ import javafx.scene.control.TextField;
 public class FXMLGestionProductosController implements Initializable {
 
     @FXML
-    private TableView<?> tvEmpleados;
+    private TableView<?> tvProductos;
     @FXML
     private TableColumn<?, ?> colNombre;
-    @FXML
-    private TableColumn<?, ?> colEstatus;
     @FXML
     private TableColumn<?, ?> colCodigo;
     @FXML
@@ -41,6 +38,8 @@ public class FXMLGestionProductosController implements Initializable {
     @FXML
     private TableColumn<?, ?> colFechaVencimiento;
     @FXML
+    private TableColumn<?, ?> colEstatus;
+    @FXML
     private TableColumn<?, ?> colCategoria;
     @FXML
     private TextField tfBuscarProducto;
@@ -52,7 +51,10 @@ public class FXMLGestionProductosController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
+    
+    public void inicializarInformacion(){
+        
+    }
 
     @FXML
     private void btnRegistrar(ActionEvent event) {

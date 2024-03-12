@@ -131,6 +131,11 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
+            <Button layoutX="10.0" layoutY="215.0" mnemonicParsing="false" onAction="#btnIrPantallaProductos" prefHeight="36.0" prefWidth="150.0" style="-fx-background-color: #f1d4e8; -fx-background-radius: 20px;" text="Productos" textFill="#d02b55">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>

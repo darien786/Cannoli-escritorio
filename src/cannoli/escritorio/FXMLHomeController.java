@@ -5,6 +5,7 @@
  */
 package cannoli.escritorio;
 
+import cannoli.escritorio.productos.FXMLGestionProductosController;
 import cannoli.escritorio.proveedores.FXMLGestionProveedoresController;
 import cannoli.modelo.pojo.Empleado;
 import cannoli.utils.Utilidades;
@@ -143,6 +144,25 @@ public class FXMLHomeController implements Initializable {
             stage.setScene(new Scene(vista));
 
             FXMLGestionProveedoresController controlador = loader.getController();
+            controlador.inicializarInformacion();
+
+            stage.showAndWait();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void btnIrPantallaProductos(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/cannoli/escritorio/productos/FXMLGestionProductos.fxml"));
+            Parent vista = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(vista));
+
+            FXMLGestionProductosController controlador = loader.getController();
             controlador.inicializarInformacion();
 
             stage.showAndWait();

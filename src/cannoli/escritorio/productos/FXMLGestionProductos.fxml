@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="569.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="productos.FXMLGestionProductosController">
+<AnchorPane id="AnchorPane" prefHeight="569.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cannoli.escritorio.productos.FXMLGestionProductosController">
     <children>
       <Pane layoutX="32.0" layoutY="143.0" prefHeight="409.0" prefWidth="769.0" style="-fx-background-color: #d02b55; -fx-background-radius: 20;">
          <children>
@@ -16,7 +16,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <TableView fx:id="tvEmpleados" layoutX="15.0" layoutY="45.0" prefHeight="347.0" prefWidth="739.0" style="-fx-background-color: transparent;">
+            <TableView fx:id="tvProductos" layoutX="15.0" layoutY="45.0" prefHeight="347.0" prefWidth="739.0" style="-fx-background-color: transparent;">
               <columns>
                 <TableColumn fx:id="colNombre" prefWidth="99.0" text="Nombre" />
                   <TableColumn fx:id="colCodigo" prefWidth="81.0" text="Código" />

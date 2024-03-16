@@ -14,6 +14,7 @@ import cannoli.modelo.pojo.Estatus;
 import cannoli.modelo.pojo.Mensaje;
 import cannoli.modelo.pojo.Persona;
 import cannoli.modelo.pojo.Rol;
+import cannoli.utils.Constantes;
 import cannoli.utils.Utilidades;
 import static cannoli.utils.Utilidades.seleccionarImagen;
 import java.awt.image.BufferedImage;
@@ -180,7 +181,7 @@ public class FXMLFormularioEmpleadoController implements Initializable {
         empleadoNuevo.setEstatus(cbEstatus.getValue().getIdEstatus());
         empleadoNuevo.setRol(cbRol.getValue().getIdRol());
 
-        String ruta = "C:/Cannoli/empleados/" + empleadoNuevo.getCurp() + "/" + empleadoNuevo.getCurp() + ".png";
+        String ruta = Constantes.PATH_PRODUCTO + empleadoNuevo.getCurp() + "/" + empleadoNuevo.getCurp() + ".png";
         String imagenBase64 = Utilidades.convertirImagenABase64(imagen);
 
         empleadoNuevo.setFotografia(ruta);

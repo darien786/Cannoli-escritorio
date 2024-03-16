@@ -42,11 +42,13 @@ public class Utilidades {
         return foto;
     }
     
-    public static Image decodificarImagenBase64(String imagenBase64) {
+     public static Image decodificarImagenBase64(String imagenBase64) {
         byte[] decodeImage = Base64.getDecoder().decode(imagenBase64.replaceAll("\\n", ""));
-        return new Image(new ByteArrayInputStream(decodeImage));
+
+        Image imagen = new Image(new ByteArrayInputStream(decodeImage));
+        return imagen;
     }
-   
+     
     public static String convertirImagenABase64(File archivoImagen) throws IOException {
         byte[] bytesDeImagen = Files.readAllBytes(archivoImagen.toPath());
         return Base64.getEncoder().encodeToString(bytesDeImagen);

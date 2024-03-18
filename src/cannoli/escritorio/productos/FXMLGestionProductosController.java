@@ -82,6 +82,7 @@ public class FXMLGestionProductosController implements Initializable {
         colCategoria.setCellValueFactory(new PropertyValueFactory("nombreCategoria"));
         colFechaElaboracion.setCellValueFactory(new PropertyValueFactory("fechaElaboracion"));
         colFechaVencimiento.setCellValueFactory(new PropertyValueFactory("fechaVencimiento"));
+        colCantidad.setCellValueFactory(new PropertyValueFactory("cantidad"));
     }
     
 
@@ -137,10 +138,8 @@ public class FXMLGestionProductosController implements Initializable {
         Producto producto = tvProductos.getSelectionModel().getSelectedItem();
         if(producto != null){
             try{
-            Producto productoEliminado = new Producto();
-            productoEliminado.setIdProducto(producto.getIdProducto());
             
-            Mensaje mensaje = ProductoDAO.eliminarProducto(productoEliminado);
+            Mensaje mensaje = ProductoDAO.eliminarProducto(producto);
             if(!mensaje.getError()){
                 Utilidades.mostrarAlertaSimple("Eliminación", mensaje.getMensaje(), Alert.AlertType.INFORMATION);
             }else{

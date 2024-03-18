@@ -49,6 +49,7 @@ import javax.imageio.ImageIO;
 public class FXMLFormularioProductosController implements Initializable {
 
     private File imagen;
+    private Image image;
     private ObservableList categorias;
     private ObservableList estatus;
 
@@ -76,7 +77,6 @@ public class FXMLFormularioProductosController implements Initializable {
     private TextField tfPrecio;
     @FXML
     private TextField tfCantidad;
-    private ImageView ivEmpleado;
     @FXML
     private ComboBox<Estatus> cbEstatus;
     @FXML
@@ -99,14 +99,20 @@ public class FXMLFormularioProductosController implements Initializable {
     @FXML
     private void btnGuardar(ActionEvent event) {
 
-        if (producto == null) {
-            producto = new Producto();
+        if (this.producto == null) {
+            this.producto = new Producto();
         }
 
         if (!validarDatos()) {
             Mensaje mensaje = null;
             if (producto.getIdProducto() != null) {
-
+                llenarProducto(producto);
+                mensaje = ProductoDAO.modificarProducto(producto);
+                if(!mensaje.getError()){
+                    Utilidades.mostrarAlertaSimple("Modificación", mensaje.getMensaje(), Alert.AlertType.INFORMATION);
+                }else{
+                    Utilidades.mostrarAlertaSimple("Error", mensaje.getMensaje(), Alert.AlertType.INFORMATION);
+                }
             } else {
                 llenarProducto(producto);
                 mensaje = ProductoDAO.registrarProducto(producto);
@@ -176,14 +182,20 @@ public class FXMLFormularioProductosController implements Initializable {
     private void llenarProducto(Producto producto) {
         try {
             String ruta = Constantes.PATH_PRODUCTO + tfNombre.getText().trim().toString() + "/" + tfNombre.getText().trim().toString() + ".png";
-            String imagenBase64 = Utilidades.convertirImagenABase64(imagen);
+            String imagenBase64;
 
+            if(imagen == null){
+                imagenBase64 = Utilidades.imageToBase64(image);
+            }else{
+                imagenBase64 = Utilidades.convertirImagenABase64(imagen);
+            }
+            
             producto.setNombre(tfNombre.getText().trim().toString());
             producto.setCodigo(tfCodigo.getText().trim().toString());
             producto.setPrecio(Float.parseFloat(tfPrecio.getText().trim().toString()));
             producto.setCantidad(Integer.parseInt(tfCantidad.getText().trim().toString()));
             producto.setDescripcion(taDescripcion.getText().trim().toString());
-            producto.setCategoria(1);
+            producto.setCategoria(cbCategoria.getValue().getIdCategoria());
             producto.setEstatus(cbEstatus.getValue().getIdEstatus());
             producto.setFotografia(ruta);
             producto.setFechaElaboracion(dpFechaElaboracion.getValue().toString());
@@ -204,7 +216,7 @@ public class FXMLFormularioProductosController implements Initializable {
         taDescripcion.setText(producto.getDescripcion());
         cbEstatus.getSelectionModel().select(producto.getEstatus() - 1);
         cbCategoria.getSelectionModel().select(producto.getCategoria() - 1);
-        Image image = Utilidades.decodificarImagenBase64(producto.getFotografiaBase64());
+        image = Utilidades.decodificarImagenBase64(producto.getFotografiaBase64());
         ivProducto.setImage(image);
     }
 
@@ -212,9 +224,7 @@ public class FXMLFormularioProductosController implements Initializable {
         List<Categoria> listaCategoria = CategoriaDAO.obtenerCategorias();
         categorias = FXCollections.observableArrayList(listaCategoria);
         cbCategoria.setItems(categorias);
-        if (producto == null) {
-            cbCategoria.getSelectionModel().select(0);
-        }
+        cbCategoria.getSelectionModel().select(0);
     }
 
     public void obtenerProducto(Producto producto) {

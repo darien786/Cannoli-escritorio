@@ -6,10 +6,12 @@
 package cannoli.utils;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Base64;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
@@ -54,4 +56,15 @@ public class Utilidades {
         return Base64.getEncoder().encodeToString(bytesDeImagen);
     }
     
+    public static String imageToBase64(Image image) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        try {
+            // Escribir la imagen en un stream de bytes
+            javax.imageio.ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", outputStream);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        // Codificar los bytes en Base64 y devolver la cadena resultante
+        return Base64.getEncoder().encodeToString(outputStream.toByteArray());
+    }
 }

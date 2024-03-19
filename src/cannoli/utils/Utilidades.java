@@ -11,8 +11,10 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Base64;
+import java.util.Optional;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
@@ -29,6 +31,15 @@ public class Utilidades {
         alerta.setHeaderText(null);
         alerta.setContentText(mensaje);
         alerta.showAndWait();
+    }
+    
+    public static Optional<ButtonType> mostrarAlertaConfirmacion(String titulo, String confirmacion) {
+        Alert dialogoAlertaConfirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+        dialogoAlertaConfirmacion.setTitle(titulo);
+        dialogoAlertaConfirmacion.setHeaderText(null);
+        dialogoAlertaConfirmacion.setContentText(confirmacion);
+
+        return dialogoAlertaConfirmacion.showAndWait();
     }
     
     public static File seleccionarImagen(Window ventanaPadre) {

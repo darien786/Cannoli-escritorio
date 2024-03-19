@@ -18,10 +18,9 @@
             </Label>
             <TableView fx:id="tvProveedores" layoutX="15.0" layoutY="45.0" prefHeight="347.0" prefWidth="739.0" style="-fx-background-color: transparent;">
               <columns>
-                <TableColumn fx:id="colNombre" prefWidth="294.0" text="Nombre" />
-                  <TableColumn fx:id="colEmpresa" prefWidth="251.0" text="Empresa" />
-                  <TableColumn fx:id="colTelefono" prefWidth="106.0" text="Télefono" />
-                  <TableColumn fx:id="colEstatus" prefWidth="87.0" text="Estatus" />
+                <TableColumn fx:id="colNombre" prefWidth="304.0" text="Nombre" />
+                  <TableColumn fx:id="colEmpresa" prefWidth="313.0" text="Empresa" />
+                  <TableColumn fx:id="colTelefono" prefWidth="121.0" text="Télefono" />
               </columns>
             </TableView>
          </children></Pane>

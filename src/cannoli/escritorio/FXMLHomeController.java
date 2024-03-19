@@ -143,9 +143,6 @@ public class FXMLHomeController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(new Scene(vista));
 
-            FXMLGestionProveedoresController controlador = loader.getController();
-            controlador.inicializarInformacion();
-
             stage.showAndWait();
 
         } catch (Exception e) {

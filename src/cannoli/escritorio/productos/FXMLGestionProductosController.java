@@ -8,12 +8,15 @@ package cannoli.escritorio.productos;
 import cannoli.modelo.dao.ProductoDAO;
 import cannoli.modelo.pojo.Mensaje;
 import cannoli.modelo.pojo.Producto;
+import cannoli.modelo.pojo.Proveedor;
 import cannoli.utils.Utilidades;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,6 +38,7 @@ import javafx.stage.Stage;
 public class FXMLGestionProductosController implements Initializable {
 
     private ObservableList<Producto> productos;
+    private FilteredList<Producto> listaProductos;
     
     @FXML
     private TableView<Producto> tvProductos;
@@ -66,6 +70,7 @@ public class FXMLGestionProductosController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         solicitarInformacionProductos();
         cargarInformacionTabla();
+        configurarFiltro();
     }    
     
     private void solicitarInformacionProductos(){
@@ -153,5 +158,32 @@ public class FXMLGestionProductosController implements Initializable {
             Utilidades.mostrarAlertaSimple("Error", "Para modificar se debe seleccionar un producto de la tabla", Alert.AlertType.WARNING);
         }
     }
-    
+   
+   private void configurarFiltro() {
+
+        listaProductos = new FilteredList<>(productos, b -> true);
+
+        tfBuscarProducto.textProperty().addListener((observable, oldValue, newValue) -> {
+            listaProductos.setPredicate(producto -> {
+                if (newValue == null || newValue.trim().isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (producto.getNombre() != null && producto.getNombre().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+                if(producto.getCodigo() != null && producto.getCodigo().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }
+                if(producto.getNombreCategoria() != null && producto.getNombreCategoria().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }
+                return false;
+            });
+        });
+
+        SortedList<Producto> sortedData = new SortedList<>(listaProductos);
+        sortedData.comparatorProperty().bind(tvProductos.comparatorProperty());
+        tvProductos.setItems(sortedData);
+    }
 }

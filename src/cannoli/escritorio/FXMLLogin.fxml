@@ -11,19 +11,19 @@
 
 <AnchorPane id="AnchorPane" maxHeight="558.0" maxWidth="871.0" prefHeight="400.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cannoli.escritorio.FXMLLoginController">
     <children>
-      <Pane layoutX="447.0" prefHeight="450.0" prefWidth="427.0" style="-fx-background-color: #d02b55;">
+      <Pane layoutX="447.0" prefHeight="450.0" prefWidth="427.0" style="-fx-background-color: #F291BF;">
          <children>
-            <Label layoutX="100.0" layoutY="31.0" text="Bienvenido" textFill="#f1d4e8">
+            <Label layoutX="100.0" layoutY="31.0" text="Bienvenido">
                <font>
                   <Font name="System Bold" size="46.0" />
                </font>
             </Label>
-            <Label layoutX="158.0" layoutY="89.0" text="Ingresa a tu cuenta" textFill="#f1d4e8">
+            <Label layoutX="158.0" layoutY="89.0" text="Ingresa a tu cuenta">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="73.0" layoutY="140.0" text="Usuario" textFill="#f1d4e8">
+            <Label layoutX="73.0" layoutY="140.0" text="Usuario">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Label>
@@ -32,7 +32,7 @@
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font></Label>
-            <Label layoutX="75.0" layoutY="217.0" text="Contraseña" textFill="#f1d4e8">
+            <Label layoutX="75.0" layoutY="217.0" text="Contraseña">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Label>
@@ -41,7 +41,7 @@
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font></Label>
-            <Button layoutX="106.0" layoutY="312.0" mnemonicParsing="false" onAction="#btnIniciarSesion" prefHeight="34.0" prefWidth="225.0" style="-fx-background-color: #f1d4e8; -fx-border-radius: 30; -fx-background-radius: 30;" text="Iniciar sesión" textFill="#d02b55">
+            <Button layoutX="106.0" layoutY="312.0" mnemonicParsing="false" onAction="#btnIniciarSesion" prefHeight="34.0" prefWidth="225.0" style="-fx-background-color: d9d9d9; -fx-border-radius: 30; -fx-background-radius: 30;" text="Iniciar sesión">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

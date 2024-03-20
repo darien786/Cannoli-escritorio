@@ -10,32 +10,32 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="653.0" prefWidth="1085.0" style="-fx-background-color: #f99eb9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cannoli.escritorio.FXMLHomeController">
+<AnchorPane id="AnchorPane" prefHeight="653.0" prefWidth="1085.0" style="-fx-background-color: #F291BF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cannoli.escritorio.FXMLHomeController">
    <children>
-      <Label layoutX="67.0" layoutY="14.0" text="Pasteleria Cannoli" textFill="#d02b55">
+      <Label layoutX="67.0" layoutY="14.0" text="Pastelería Cannoli" textFill="#0d0d0d">
          <font>
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <Label layoutX="67.0" layoutY="80.0" text="Dashboad" textFill="#d02b55">
+      <Label layoutX="67.0" layoutY="80.0" text="Dashboad" textFill="#0d0d0d">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="157.0" layoutY="80.0" text="¡Hola, bienvenid@ de nuevo" textFill="#d02b55">
+      <Label layoutX="157.0" layoutY="80.0" text="¡Hola, bienvenid@ de nuevo" textFill="#0d0d0d">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="lbNombreEmpleado" layoutX="364.0" layoutY="80.0" text="nombre" textFill="#d02b55">
+      <Label fx:id="lbNombreEmpleado" layoutX="364.0" layoutY="80.0" text="nombre" textFill="#0d0d0d">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d3d7da" height="21.0" layoutX="146.0" layoutY="80.0" stroke="#dbe0e4" strokeType="INSIDE" width="3.0" />
-      <Pane layoutX="202.0" layoutY="126.0" prefHeight="504.0" prefWidth="549.0" style="-fx-background-color: #d02b55; -fx-background-radius: 20;">
+      <Pane layoutX="202.0" layoutY="126.0" prefHeight="504.0" prefWidth="549.0" style="-fx-background-color: #d9d9d9; -fx-background-radius: 20;">
          <children>
-            <Label layoutX="14.0" layoutY="14.0" text="Modulos" textFill="#f1d4e8">
+            <Label layoutX="14.0" layoutY="14.0" text="Modulos">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Label>
@@ -75,29 +75,29 @@
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
          </children></Pane>
-      <Pane layoutX="769.0" layoutY="191.0" prefHeight="375.0" prefWidth="302.0" style="-fx-background-color: #d02b55; -fx-background-radius: 20;">
+      <Pane layoutX="769.0" layoutY="191.0" prefHeight="375.0" prefWidth="302.0" style="-fx-background-color: #d9d9d9; -fx-background-radius: 20;">
          <children>
-            <Label layoutX="14.0" layoutY="14.0" text="Datos de la cuenta" textFill="#f1d4e8">
+            <Label layoutX="14.0" layoutY="14.0" text="Datos de la cuenta">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Label>
-            <Label layoutX="12.0" layoutY="61.0" text="Nombre" textFill="#f1d4e8">
+            <Label layoutX="12.0" layoutY="61.0" text="Nombre">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Label>
-            <Label layoutX="13.0" layoutY="116.0" text="Curp" textFill="#f1d4e8">
+            <Label layoutX="13.0" layoutY="116.0" text="Curp">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Label>
-            <Label layoutX="11.0" layoutY="175.0" text="Email" textFill="#f1d4e8">
+            <Label layoutX="11.0" layoutY="175.0" text="Email">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Label>
-            <Label layoutX="17.0" layoutY="229.0" text="Rol" textFill="#f1d4e8">
+            <Label layoutX="17.0" layoutY="229.0" text="Rol">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Label>
-            <Label fx:id="lbEmpresa" layoutX="17.0" layoutY="285.0" text="Teléfono" textFill="#f1d4e8">
+            <Label fx:id="lbEmpresa" layoutX="17.0" layoutY="285.0" text="Teléfono">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Label>
@@ -114,24 +114,24 @@
          </image>
       </ImageView>
       <ImageView fx:id="ivUsuarios" fitHeight="110.0" fitWidth="111.0" layoutX="617.0" layoutY="505.0" pickOnBounds="true" preserveRatio="true" />
-      <Pane layoutX="14.0" layoutY="127.0" prefHeight="504.0" prefWidth="170.0" style="-fx-background-color: #d02b55; -fx-background-radius: 20px;">
+      <Pane layoutX="14.0" layoutY="127.0" prefHeight="504.0" prefWidth="170.0" style="-fx-background-color: #d9d9d9; -fx-background-radius: 20px;">
          <children>
-            <Button layoutX="10.0" layoutY="431.0" mnemonicParsing="false" onAction="#btnCerrarSesion" prefHeight="36.0" prefWidth="150.0" style="-fx-background-color: #f1d4e8; -fx-background-radius: 20px;" text="Cerrar Sesión" textFill="#d02b55">
+            <Button layoutX="10.0" layoutY="431.0" mnemonicParsing="false" onAction="#btnCerrarSesion" prefHeight="36.0" prefWidth="150.0" style="-fx-background-color: #F291BF; -fx-background-radius: 20px;" text="Cerrar Sesión">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="261.0" mnemonicParsing="false" onAction="#btnIrPantallaEmpleados" prefHeight="36.0" prefWidth="150.0" style="-fx-background-color: #f1d4e8; -fx-background-radius: 20px;" text="Empleados" textFill="#d02b55">
+            <Button layoutX="10.0" layoutY="261.0" mnemonicParsing="false" onAction="#btnIrPantallaEmpleados" prefHeight="36.0" prefWidth="150.0" style="-fx-background-color: #F291BF; -fx-background-radius: 20px;" text="Empleados">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="318.0" mnemonicParsing="false" onAction="#btnIrPantallaProveedores" prefHeight="36.0" prefWidth="150.0" style="-fx-background-color: #f1d4e8; -fx-background-radius: 20px;" text="Proveedores" textFill="#d02b55">
+            <Button layoutX="10.0" layoutY="318.0" mnemonicParsing="false" onAction="#btnIrPantallaProveedores" prefHeight="36.0" prefWidth="150.0" style="-fx-background-color: #F291BF; -fx-background-radius: 20px;" text="Proveedores">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="215.0" mnemonicParsing="false" onAction="#btnIrPantallaProductos" prefHeight="36.0" prefWidth="150.0" style="-fx-background-color: #f1d4e8; -fx-background-radius: 20px;" text="Productos" textFill="#d02b55">
+            <Button layoutX="10.0" layoutY="215.0" mnemonicParsing="false" onAction="#btnIrPantallaProductos" prefHeight="36.0" prefWidth="150.0" style="-fx-background-color: #F291BF; -fx-background-radius: 20px;" text="Productos">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

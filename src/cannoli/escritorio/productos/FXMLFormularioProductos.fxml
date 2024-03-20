@@ -9,9 +9,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="912.0" style="-fx-background-color: #f99eb9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cannoli.escritorio.productos.FXMLFormularioProductosController">
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="912.0" style="-fx-background-color: #F291BF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cannoli.escritorio.productos.FXMLFormularioProductosController">
    <children>
-      <Label layoutX="25.0" layoutY="30.0" text="Productos" textFill="#d02b55">
+      <Label layoutX="25.0" layoutY="30.0" text="Productos" textFill="#0d0d0d">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
@@ -21,33 +21,33 @@
             <Image url="@../../img/user.png" />
          </image>
       </ImageView>
-      <Label layoutX="47.0" layoutY="79.0" text="Registro de empleado" textFill="#d02b55">
+      <Label fx:id="lbTexto" layoutX="47.0" layoutY="79.0" text="Registro de producto" textFill="#0d0d0d">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d02b55" height="6.0" layoutX="31.0" layoutY="115.0" stroke="#f4f6f6" strokeType="INSIDE" width="850.0" />
-      <Pane layoutX="15.0" layoutY="129.0" prefHeight="395.0" prefWidth="878.0" style="-fx-background-color: #d02b55; -fx-background-radius: 20;">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="6.0" layoutX="31.0" layoutY="115.0" stroke="#f4f6f6" strokeType="INSIDE" width="850.0" />
+      <Pane layoutX="15.0" layoutY="129.0" prefHeight="395.0" prefWidth="878.0" style="-fx-background-color: #d9d9d9; -fx-background-radius: 20;">
          <children>
             <TextField fx:id="tfNombre" layoutX="15.0" layoutY="76.0" prefHeight="25.0" prefWidth="175.0" promptText="Nombre" style="-fx-background-radius: 30; -fx-background-color: white;" />
-            <Label layoutX="15.0" layoutY="49.0" text="Nombre " textFill="#f1d4e8">
+            <Label layoutX="15.0" layoutY="49.0" text="Nombre ">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Label>
-            <Label layoutX="228.0" layoutY="52.0" text="Código" textFill="#f1d4e8">
+            <Label layoutX="228.0" layoutY="52.0" text="Código">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Label>
-            <Label layoutX="479.0" layoutY="151.0" text="Descripcion" textFill="#f1d4e8">
+            <Label layoutX="479.0" layoutY="151.0" text="Descripcion">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Label>
-            <Label layoutX="11.0" layoutY="14.0" text="Datos del producto" textFill="#f1d4e8">
+            <Label layoutX="11.0" layoutY="14.0" text="Datos del producto">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Label>
             <TextField fx:id="tfCodigo" layoutX="228.0" layoutY="79.0" prefHeight="25.0" prefWidth="175.0" promptText="000001" style="-fx-background-radius: 30; -fx-background-color: white;" />
-            <Label layoutX="228.0" layoutY="140.0" text="Fecha Vencimiento" textFill="#f1d4e8">
+            <Label layoutX="228.0" layoutY="140.0" text="Fecha Vencimiento">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Label>
@@ -55,33 +55,33 @@
             <Label fx:id="lbErrorApellidoPaterno" layoutX="248.0" layoutY="110.0" text="Label" textFill="RED" />
             <Label fx:id="lbErrorApellidoMaterno" layoutX="462.0" layoutY="113.0" text="Label" textFill="RED" />
             <Label fx:id="lbErrorCURP" layoutX="693.0" layoutY="113.0" text="Label" textFill="RED" />
-            <Label fx:id="lbErrorEmail" layoutX="462.0" layoutY="211.0" text="Label" textFill="RED" />
+            <Label fx:id="lbErrorEmail" layoutX="239.0" layoutY="318.0" text="Label" textFill="RED" />
             <Label fx:id="lbErrorCURP1" layoutX="33.0" layoutY="207.0" text="Label" textFill="RED" />
             <Label fx:id="lbErrorCURP2" layoutX="247.0" layoutY="211.0" text="Telefono" textFill="RED" />
-            <Label layoutX="462.0" layoutY="51.0" text="Precio" textFill="#f1d4e8">
+            <Label layoutX="462.0" layoutY="51.0" text="Precio" textFill="#11000c">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
             <TextField fx:id="tfPrecio" layoutX="462.0" layoutY="76.0" prefWidth="175.0" promptText="20.5" style="-fx-background-radius: 30; -fx-background-color: white;" />
-            <Label layoutX="681.0" layoutY="48.0" text="Cantidad" textFill="#f1d4e8">
+            <Label layoutX="681.0" layoutY="48.0" text="Cantidad">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
             <TextField fx:id="tfCantidad" layoutX="681.0" layoutY="73.0" prefWidth="175.0" promptText="12" style="-fx-background-radius: 30; -fx-background-color: white;" />
             <TextArea fx:id="taDescripcion" layoutX="479.0" layoutY="185.0" prefHeight="169.0" prefWidth="369.0" />
-            <Label layoutX="21.0" layoutY="143.0" text="Fecha Elaboración" textFill="#f1d4e8">
+            <Label layoutX="21.0" layoutY="143.0" text="Fecha Elaboración">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="21.0" layoutY="249.0" text="Categoría" textFill="#f1d4e8">
+            <Label layoutX="21.0" layoutY="249.0" text="Categoría">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="231.0" layoutY="249.0" text="Estatus" textFill="#f1d4e8">
+            <Label layoutX="231.0" layoutY="249.0" text="Estatus">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -92,7 +92,7 @@
             <DatePicker fx:id="dpFechaVigencia" layoutX="227.0" layoutY="182.0" prefHeight="31.0" prefWidth="178.0" style="-fx-background-color: white; -fx-background-radius: 5px;" />
          </children>
       </Pane>
-      <Button layoutX="304.0" layoutY="589.0" mnemonicParsing="false" onAction="#btnGuardar" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #d02b55; -fx-background-radius: 30;" text="Guardar" textFill="WHITE">
+      <Button layoutX="306.0" layoutY="597.0" mnemonicParsing="false" onAction="#btnGuardar" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #d9d9d9; -fx-background-radius: 30;" text="Guardar" textFill="#0d0d0d">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

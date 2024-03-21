@@ -52,19 +52,36 @@ public class EmpleadoDAO {
             mensaje = gson.fromJson(respuesta.getContenido(), Mensaje.class);
         } else {
             mensaje.setError(true);
-            mensaje.setMensaje("Error en la petición para crear el usuario");
+            mensaje.setMensaje("Error en la petición para registrar el empleado");
         }
 
         return mensaje;
     }
     
-    public static Empleado obtenerEmpleadoPorId(Empleado empleado){
-        String url = Constantes.URL_WS + "empleados/obtenerEmpleadoPorId";
-        Empleado empleadoSolicitado = null;
+    public static Mensaje modificarEmpleado(DatosRegistroEmpleado empleado){
+        Mensaje mensaje = new Mensaje();
+        String url = Constantes.URL_WS + "empleados/modificarEmpleado";
+        
+        Gson gson = new Gson();
+        String parametros = gson.toJson(empleado);
+        CodigoHTTP respuesta = ConexionHTTP.peticionPUT(url, parametros);
+        if(respuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK){
+            mensaje = gson.fromJson(respuesta.getContenido(), Mensaje.class);
+        }else{
+            mensaje.setError(Boolean.TRUE);
+            mensaje.setMensaje("Error en la petición para modificar al empleado");
+        }
+        
+        return mensaje;
+    }
+    
+    public static DatosRegistroEmpleado obtenerEmpleadoPorId(Integer idEmpleado){
+        DatosRegistroEmpleado empleadoSolicitado = null;
+        String url = Constantes.URL_WS + "empleados/obtenerEmpleadoPorId/" + idEmpleado;
         CodigoHTTP respuesta = ConexionHTTP.peticionGET(url);
         if(respuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK){
-            Gson gson = new Gson();
-            empleadoSolicitado = gson.fromJson(respuesta.getContenido(), Empleado.class);
+             Gson gson = new Gson();
+            empleadoSolicitado = gson.fromJson(respuesta.getContenido(), DatosRegistroEmpleado.class);
         }
         
         return empleadoSolicitado;

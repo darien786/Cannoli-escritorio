@@ -141,9 +141,6 @@ public class FXMLFormularioProductosController implements Initializable {
         estatus = FXCollections.observableArrayList(listaEstatus);
         cbEstatus.setItems(estatus);
         cbEstatus.getSelectionModel().select(0);
-        if (producto != null) {
-            cbEstatus.getSelectionModel().select(-1);
-        }
     }
 
     private Boolean validarDatos() {

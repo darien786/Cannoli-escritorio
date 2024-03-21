@@ -106,6 +106,8 @@ public class FXMLGestionProductosController implements Initializable {
             stage.setScene(scene);
             stage.showAndWait();
             
+            solicitarInformacionProductos();
+            configurarFiltro();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -129,6 +131,8 @@ public class FXMLGestionProductosController implements Initializable {
             stage.setTitle("Modificar producto");
             stage.showAndWait();
             
+            solicitarInformacionProductos();
+            configurarFiltro();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -147,6 +151,8 @@ public class FXMLGestionProductosController implements Initializable {
             Mensaje mensaje = ProductoDAO.eliminarProducto(producto);
             if(!mensaje.getError()){
                 Utilidades.mostrarAlertaSimple("Eliminación", mensaje.getMensaje(), Alert.AlertType.INFORMATION);
+                solicitarInformacionProductos();
+                configurarFiltro();
             }else{
                 Utilidades.mostrarAlertaSimple("Error", mensaje.getMensaje(), Alert.AlertType.ERROR);
             }

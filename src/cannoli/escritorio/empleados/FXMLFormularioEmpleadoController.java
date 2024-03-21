@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cannoli.escritorio;
+package cannoli.escritorio.empleados;
 
 import cannoli.modelo.dao.EmpleadoDAO;
 import cannoli.modelo.dao.EstatusDAO;
@@ -24,6 +24,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -48,8 +50,8 @@ import javax.imageio.ImageIO;
 public class FXMLFormularioEmpleadoController implements Initializable {
 
     private File imagen = null;
-
-    private DatosRegistroEmpleado empleadoRegistrado;
+    private Image image;
+    private DatosRegistroEmpleado datosEmpleado;
     private Empleado empleado = null;
     private ObservableList olEstatus;
     private ObservableList olSexo;
@@ -113,23 +115,31 @@ public class FXMLFormularioEmpleadoController implements Initializable {
     }
     
     @FXML
-    private void btnGuardar(ActionEvent event) throws IOException {
-        guardarInformacionEmpleado();
-
-        Mensaje mensaje = EmpleadoDAO.registrarEmpleado(empleadoRegistrado);
-        if (!mensaje.getError()) {
-            Utilidades.mostrarAlertaSimple("Registro", mensaje.getMensaje(), Alert.AlertType.INFORMATION);
-        } else {
-            Utilidades.mostrarAlertaSimple("Error", mensaje.getMensaje(), Alert.AlertType.ERROR);
+    private void btnGuardar(ActionEvent event) {
+        
+        if(empleado == null){
+            this.datosEmpleado = new DatosRegistroEmpleado();
         }
-    }
-
-    private void guardarInformacionEmpleado() throws IOException {
-        if (empleado != null) {
-            
-        }else{
-            if (!validarDatos()) {
-                llenarDatosEmpleado();
+        
+        if(!validarDatos()){
+            Mensaje mensaje = null;
+            if(empleado.getIdEmpleado() != null){
+                  guardarInformacionEmpleado(this.datosEmpleado);
+                  mensaje = EmpleadoDAO.modificarEmpleado(this.datosEmpleado);
+                  if(!mensaje.getError()){
+                      Utilidades.mostrarAlertaSimple("Modificación", mensaje.getMensaje(), Alert.AlertType.INFORMATION);
+                  }else{
+                      Utilidades.mostrarAlertaSimple("Error", mensaje.getMensaje(), Alert.AlertType.ERROR);
+                  }
+                  
+            }else{
+                  guardarInformacionEmpleado(datosEmpleado);
+                  mensaje = EmpleadoDAO.registrarEmpleado(datosEmpleado);
+                  if(!mensaje.getError()){
+                      Utilidades.mostrarAlertaSimple("Registro", mensaje.getMensaje(), Alert.AlertType.INFORMATION);
+                  }else{
+                      Utilidades.mostrarAlertaSimple("Error", mensaje.getMensaje(), Alert.AlertType.ERROR);
+                  }
             }
         }
     }
@@ -137,61 +147,76 @@ public class FXMLFormularioEmpleadoController implements Initializable {
     public void obtenerEmpleado(Empleado empleado){
         if(empleado != null){
             this.empleado = empleado;
-            obtenerInformacionCompleta(empleado.getIdEmpleado());
+            this.datosEmpleado = EmpleadoDAO.obtenerEmpleadoPorId(empleado.getIdEmpleado());
+            llenarCamposEmpleado(this.datosEmpleado);
+            tfCurp.setDisable(true);
+            tfUsername.setDisable(true);
+            cbRol.setDisable(true);
+        }else if(empleado == null){
+            cbEstatus.setDisable(true);
         }
     }
     
-    public void obtenerInformacionCompleta(Integer idEmpleado){
-        Empleado empleado = new Empleado();
-        empleado.setIdEmpleado(idEmpleado);
+    private void guardarInformacionEmpleado(DatosRegistroEmpleado datosEmpleado){
         
-        Empleado nuevo = EmpleadoDAO.obtenerEmpleadoPorId(empleado);
-        if(nuevo != null){
-            llenarCamposEmpleado(nuevo);
+        try {
+            
+            Empleado empleadoNuevo = new Empleado();
+            Persona persona = new Persona();
+            
+            String ruta = Constantes.PATH_EMPLEADO + tfCurp.getText().trim().toString() + "/"+tfCurp.getText().trim().toString() +".png";
+            String imagenBase64;
+            if(imagen == null ){
+                imagenBase64 = Utilidades.imageToBase64(image);
+            }else{
+                 imagenBase64= Utilidades.convertirImagenABase64(imagen);
+            }
+            if(this.empleado.getPersona() != null && this.empleado.getIdEmpleado() != null){
+                persona.setIdPersona(this.empleado.getPersona());
+                empleadoNuevo.setIdEmpleado(this.empleado.getIdEmpleado());
+            }
+            
+            persona.setNombrePersona(tfNombre.getText().trim().toString());
+            persona.setApellidoPaterno(tfApellidoPaterno.getText().trim().toString());
+            persona.setApellidoMaterno(tfApellidoMaterno.getText().trim().toString());
+            persona.setSexo(cbSexo.getValue().toString());
+            persona.setTelefono(tfTelefono.getText().trim().toString());
+            empleadoNuevo.setCurp(tfCurp.getText().trim().toString());
+            empleadoNuevo.setUsername(tfUsername.getText().trim().toString());
+            empleadoNuevo.setCorreo(tfCorreo.getText().trim().toString());
+            empleadoNuevo.setContrasenia(tfPassword.getText().trim().toString());
+            empleadoNuevo.setRol(cbRol.getValue().getIdRol());
+            empleadoNuevo.setEstatus(cbEstatus.getValue().getIdEstatus());
+            empleadoNuevo.setFotografia(ruta);
+            empleadoNuevo.setFotografiaBase64(imagenBase64);
+            
+            datosEmpleado.setEmpleado(empleadoNuevo);
+            datosEmpleado.setPersona(persona);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLFormularioEmpleadoController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    private void llenarCamposEmpleado(Empleado empleado){
-        tfNombre.setText(empleado.getNombreEmpleado());
-        tfCurp.setText(empleado.getCurp());
-        tfTelefono.setText(empleado.getTelefono());
-        cbSexo.getSelectionModel().select("Femenino");
-        cbEstatus.getSelectionModel().select(empleado.getEstatus() - 1);
-        cbRol.getSelectionModel().select(empleado.getRol() -1);
         
-        Image image = Utilidades.decodificarImagenBase64(empleado.getFotografiaBase64());
+    }
+        
+    private void llenarCamposEmpleado(DatosRegistroEmpleado empleado){
+        tfNombre.setText(empleado.getPersona().getNombrePersona());
+        tfApellidoPaterno.setText(empleado.getPersona().getApellidoPaterno());
+        tfApellidoMaterno.setText(empleado.getPersona().getApellidoMaterno());
+        tfCorreo.setText(empleado.getEmpleado().getCorreo());
+        tfUsername.setText(empleado.getEmpleado().getUsername());
+        tfPassword.setText(empleado.getEmpleado().getContrasenia());
+        tfCurp.setText(empleado.getEmpleado().getCurp());
+        tfTelefono.setText(empleado.getPersona().getTelefono());
+        cbSexo.getSelectionModel().select(empleado.getPersona().getSexo());
+        cbEstatus.getSelectionModel().select(empleado.getEmpleado().getEstatus() - 1);
+        cbRol.getSelectionModel().select(empleado.getEmpleado().getRol() - 1);
+        
+        image = Utilidades.decodificarImagenBase64(empleado.getEmpleado().getFotografiaBase64());
         ivEmpleado.setImage(image);
         
     }
 
-    private void llenarDatosEmpleado() throws IOException {
-        Persona personaEmpleado = new Persona();
-        Empleado empleadoNuevo = new Empleado();
-
-        personaEmpleado.setNombrePersona(tfNombre.getText().trim().toString());
-        personaEmpleado.setApellidoPaterno(tfApellidoPaterno.getText().trim().toString());
-        personaEmpleado.setApellidoMaterno(tfApellidoMaterno.getText().trim().toString());
-        personaEmpleado.setTelefono(tfTelefono.getText().trim().toString());
-        personaEmpleado.setSexo(cbSexo.getValue().toString());
-
-        empleadoNuevo.setCurp(tfCurp.getText().trim().toString());
-        empleadoNuevo.setCorreo(tfCorreo.getText().trim().toString());
-        empleadoNuevo.setUsername(tfUsername.getText().trim().toString());
-        empleadoNuevo.setContrasenia(tfPassword.getText().trim().toString());
-        empleadoNuevo.setEstatus(cbEstatus.getValue().getIdEstatus());
-        empleadoNuevo.setRol(cbRol.getValue().getIdRol());
-
-        String ruta = Constantes.PATH_PRODUCTO + empleadoNuevo.getCurp() + "/" + empleadoNuevo.getCurp() + ".png";
-        String imagenBase64 = Utilidades.convertirImagenABase64(imagen);
-
-        empleadoNuevo.setFotografia(ruta);
-        empleadoNuevo.setFotografiaBase64(imagenBase64);
-
-        empleadoRegistrado = new DatosRegistroEmpleado();
-
-        empleadoRegistrado.setEmpleado(empleadoNuevo);
-        empleadoRegistrado.setPersona(personaEmpleado);
-    }
 
     private Boolean validarDatos() {
         Boolean error = false;
@@ -229,13 +254,7 @@ public class FXMLFormularioEmpleadoController implements Initializable {
         olEstatus = FXCollections.observableArrayList();
         olEstatus.addAll(listaEstatus);
         cbEstatus.setItems(olEstatus);
-
-        if (empleado == null) {
-            cbEstatus.setDisable(true);
-            cbEstatus.getSelectionModel().select(0);
-        } else {
-            cbEstatus.setDisable(false);
-        }
+        cbEstatus.getSelectionModel().select(0);
     }
 
     private void cargarInformacionSexo() {
@@ -246,10 +265,7 @@ public class FXMLFormularioEmpleadoController implements Initializable {
         olSexo = FXCollections.observableArrayList();
         olSexo.addAll(listaSexo);
         cbSexo.setItems(olSexo);
-
-        if (empleado == null) {
-            cbSexo.getSelectionModel().select(0);
-        }
+        cbSexo.getSelectionModel().select(0);
     }
 
     private void cargarInformacionRol() {

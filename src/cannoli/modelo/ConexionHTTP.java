@@ -204,10 +204,12 @@ public class ConexionHTTP {
             conexionHttp.setRequestMethod("DELETE");
             conexionHttp.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             conexionHttp.setDoOutput(true);
+            
             OutputStream os = conexionHttp.getOutputStream();
             os.write(parametros.getBytes());
             os.flush();
             os.close();
+            
             int codigoRespuesta = conexionHttp.getResponseCode();
             respuesta.setCodigoRespuesta(codigoRespuesta);
             if (codigoRespuesta == HttpURLConnection.HTTP_OK) {
@@ -225,6 +227,39 @@ public class ConexionHTTP {
         } catch (Exception e) {
 
         }
+        return respuesta;
+    }
+    
+    public static CodigoHTTP peticionGET(String url,String parametros) {
+        CodigoHTTP respuesta = new CodigoHTTP();
+        try {
+            URL urlServicio = new URL(url);
+            HttpURLConnection conexionHTTP = (HttpURLConnection) urlServicio.openConnection();
+
+            conexionHTTP.setRequestMethod("GET");
+            conexionHTTP.setRequestProperty("Content-Type", "application/json");
+            conexionHTTP.setDoOutput(true);
+            //Termina la escritura
+            
+            OutputStream os = conexionHTTP.getOutputStream();
+            os.write(parametros.getBytes());
+            os.flush();
+            os.close();
+            
+            int codigoRespuesta = conexionHTTP.getResponseCode();
+            respuesta.setCodigoRespuesta(codigoRespuesta);
+
+            if (codigoRespuesta == HttpURLConnection.HTTP_OK) {
+                respuesta.setContenido(deserializar(conexionHTTP.getInputStream()));
+            }
+        } catch (MalformedURLException ex) {
+            respuesta.setCodigoRespuesta(Constantes.ERROR_URL);
+            respuesta.setContenido("ERROR: " + ex.getMessage());
+        } catch (IOException ex) {
+            respuesta.setCodigoRespuesta(Constantes.ERROR_PETICION);
+            respuesta.setContenido("ERROR: " + ex.getMessage());
+        }
+
         return respuesta;
     }
 }

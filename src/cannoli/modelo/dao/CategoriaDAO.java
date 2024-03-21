@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.lang.reflect.Type;
 import cannoli.modelo.pojo.Categoria;
+import cannoli.modelo.pojo.Mensaje;
 import com.google.gson.reflect.TypeToken;
 
 /**
@@ -34,6 +35,38 @@ public class CategoriaDAO {
         }
         
         return listaCategorias;
+    }
+    
+    public static Mensaje registrarCategoria(Categoria categoria){
+        Mensaje mensaje = new Mensaje();
+        Gson gson = new Gson();
+        String url = Constantes.URL_WS + "categorias/resgistrarCategoria";
+        String parametros = gson.toJson(categoria);
+        CodigoHTTP respuesta = ConexionHTTP.peticionPOST(url, parametros);
+        if(respuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK){
+            mensaje = gson.fromJson(respuesta.getContenido(), Mensaje.class);
+        }else{
+            mensaje.setError(Boolean.TRUE);
+            mensaje.setMensaje("Error en la peticion para registrar una categoria");
+        }
+        
+        return mensaje;
+    }
+    
+    public static Mensaje modificarCategoria(Categoria categoria){
+        Mensaje mensaje = new Mensaje();
+        Gson gson = new Gson();
+        String url = Constantes.URL_WS + "categorias/editarCategoria";
+        String parametros = gson.toJson(categoria);
+        CodigoHTTP respuesta = ConexionHTTP.peticionPUT(url, parametros);
+        if(respuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK){
+            mensaje = gson.fromJson(respuesta.getContenido(), Mensaje.class);
+        }else{
+            mensaje.setError(Boolean.TRUE);
+            mensaje.setMensaje("Error en la peticion para registrar una categoria");
+        }
+        
+        return mensaje;
     }
     
     

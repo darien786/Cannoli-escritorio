@@ -8,9 +8,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="583.0" prefWidth="833.0" style="-fx-background-color: F291BF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cannoli.escritorio.categorias.FXMLGestionCategoriasController">
+<AnchorPane id="AnchorPane" prefHeight="583.0" prefWidth="833.0" style="-fx-background-color: #F291BF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cannoli.escritorio.categorias.FXMLGestionCategoriasController">
    <children>
-      <Pane layoutX="32.0" layoutY="143.0" prefHeight="409.0" prefWidth="769.0" style="-fx-background-color: #d9d9d9;; -fx-background-radius: 20;">
+      <Pane layoutX="32.0" layoutY="143.0" prefHeight="409.0" prefWidth="769.0" style="-fx-background-color: #d9d9d9; -fx-background-radius: 20;">
          <children>
             <Label layoutX="14.0" layoutY="14.0" text="Lista de categorias registradas" textFill="#0d0d0d">
                <font>
@@ -25,9 +25,9 @@
               </columns>
             </TableView>
          </children></Pane>
-      <Pane layoutX="32.0" layoutY="19.0" prefHeight="62.0" prefWidth="769.0" style="-fx-background-color: #d9d9d9;; -fx-background-radius: 20;">
+      <Pane layoutX="32.0" layoutY="19.0" prefHeight="62.0" prefWidth="769.0" style="-fx-background-color: #d9d9d9; -fx-background-radius: 20;">
          <children>
-            <TextField fx:id="tfBuscarEmpleado" layoutX="14.0" layoutY="16.0" prefHeight="31.0" prefWidth="303.0" promptText="Buscar" style="-fx-background-radius: 30;" />
+            <TextField fx:id="tfBuscarCategoria" layoutX="14.0" layoutY="16.0" prefHeight="31.0" prefWidth="303.0" promptText="Buscar" style="-fx-background-radius: 30;" />
             <ImageView fitHeight="19.0" fitWidth="20.0" layoutX="286.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../img/search.png" />
@@ -39,15 +39,15 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Button layoutX="383.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnRegistrar" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: ##d9d9d9;; -fx-background-radius: 30;" text="Registrar" textFill="#0d0d0d">
+      <Button layoutX="383.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnRegistrar" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #d9d9d9;; -fx-background-radius: 30;" text="Registrar" textFill="#0d0d0d">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <Button layoutX="529.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnEditar" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: ##d9d9d9;; -fx-background-radius: 30;" text="Editar" textFill="#0d0d0d">
+      <Button layoutX="529.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnEditar" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #d9d9d9;; -fx-background-radius: 30;" text="Editar" textFill="#0d0d0d">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <Button layoutX="676.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnEliminar" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: ##d9d9d9;; -fx-background-radius: 30;" text="Eliminar" textFill="#0d0d0d">
+      <Button layoutX="676.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnEliminar" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #d9d9d9;; -fx-background-radius: 30;" text="Eliminar" textFill="#0d0d0d">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>

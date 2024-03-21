@@ -164,4 +164,18 @@ public class FXMLHomeController implements Initializable {
         }
     }
 
+    @FXML
+    private void btnIrPantallaCategorias(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/cannoli/escritorio/categorias/FXMLGestionCategorias.fxml"));
+            Parent vista = loader.load();
+            
+            Stage stage = new Stage();
+            stage.setScene(new Scene(vista));
+            stage.showAndWait();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -41,15 +41,15 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Button layoutX="383.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnRegistrar" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: ##d9d9d9;; -fx-background-radius: 30;" text="Registrar" textFill="#0d0d0d">
+      <Button layoutX="383.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnRegistrar" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #d9d9d9; -fx-background-radius: 30;" text="Registrar" textFill="#0d0d0d">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <Button layoutX="529.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnEditar" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: ##d9d9d9;; -fx-background-radius: 30;" text="Editar" textFill="#0d0d0d">
+      <Button layoutX="529.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnEditar" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #d9d9d9; -fx-background-radius: 30;" text="Editar" textFill="#0d0d0d">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <Button layoutX="676.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnEliminar" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: ##d9d9d9;; -fx-background-radius: 30;" text="Eliminar" textFill="#0d0d0d">
+      <Button layoutX="676.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnEliminar" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #d9d9d9; -fx-background-radius: 30;" text="Eliminar" textFill="#0d0d0d">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>

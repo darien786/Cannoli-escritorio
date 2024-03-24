@@ -63,8 +63,25 @@ public class CategoriaDAO {
             mensaje = gson.fromJson(respuesta.getContenido(), Mensaje.class);
         }else{
             mensaje.setError(Boolean.TRUE);
-            mensaje.setMensaje("Error en la peticion para registrar una categoria");
+            mensaje.setMensaje("Error en la peticion para modificar una categoria");
         }
+        
+        return mensaje;
+    }
+    
+    public static Mensaje eliminarCategoria(Categoria categoria){
+        Mensaje mensaje = new Mensaje();
+        Gson gson = new Gson();
+        String url = Constantes.URL_WS + "categorias/eliminarCategoria";
+        String parametros = gson.toJson(categoria);
+        CodigoHTTP respuesta = ConexionHTTP.peticionDELETE(url, parametros);
+        if(respuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK){
+            mensaje = gson.fromJson(respuesta.getContenido(), Mensaje.class);
+        }else{
+            mensaje.setError(Boolean.TRUE);
+            mensaje.setMensaje("Error en la petición para eliminar una categoria");
+        }
+        
         
         return mensaje;
     }

@@ -106,6 +106,9 @@ public class FXMLHomeController implements Initializable {
 
             FXMLLoader load = new FXMLLoader(getClass().getResource("/cannoli/escritorio/empleados/FXMLGestionEmpleados.fxml"));
             Parent vista = load.load();
+            
+            FXMLGestionEmpleadosController controlador = load.getController();
+            controlador.obtenerEmpleadoSesion(empleado);
 
             Scene scene = new Scene(vista);
             stage.setScene(scene);

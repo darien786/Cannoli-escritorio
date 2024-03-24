@@ -8,6 +8,7 @@ package cannoli.escritorio.categorias;
 import cannoli.modelo.dao.CategoriaDAO;
 import cannoli.modelo.pojo.Categoria;
 import cannoli.modelo.pojo.Empleado;
+import cannoli.modelo.pojo.Mensaje;
 import cannoli.utils.Utilidades;
 import java.net.URL;
 import java.util.List;
@@ -112,6 +113,20 @@ public class FXMLGestionCategoriasController implements Initializable {
 
     @FXML
     private void btnEliminar(ActionEvent event) {
+        Categoria categoria = tvCategorias.getSelectionModel().getSelectedItem();
+        if(categoria != null){
+            Mensaje mensaje = CategoriaDAO.eliminarCategoria(categoria);
+            
+            Utilidades.mostrarAlertaConfirmacion("Aviso", "¿Esta seguro de eliminar esta categoría?");
+            
+            if(!mensaje.getError()){
+                Utilidades.mostrarAlertaSimple("Eliminación", mensaje.getMensaje(), Alert.AlertType.INFORMATION);
+            }else{
+                Utilidades.mostrarAlertaSimple("Error", mensaje.getMensaje(), Alert.AlertType.ERROR);
+            }
+        }else{
+            Utilidades.mostrarAlertaSimple("Error", "Para eliminar una categoria se debe seleccionar una categoria de la tabla", Alert.AlertType.WARNING);
+        }
     }
     
     
